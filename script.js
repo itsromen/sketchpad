@@ -1,8 +1,8 @@
 function createGrid(size = 16) {
-  for (i = 0; i < size**2; i++) {
+  sec.style.width = `${size*50}px`;
+  for (let i = 0; i < size**2; i++) {
     const div = document.createElement("div");
     const sec = document.querySelector("section");
-    sec.style.width = `${size*50}px`;
     sec.appendChild(div);
   }
 }
@@ -21,7 +21,7 @@ sec.addEventListener("mouseover", (e) => {
   }
 });
 
-sec.addEventListener("mouseup", () => {
+document.addEventListener("mouseup", () => {
   isDrawing = false;
 });
 
@@ -29,7 +29,7 @@ const btn = document.querySelector("button");
 
 btn.addEventListener("click", () => {
   let size = +prompt("Change the size of the box");
-  if (size === 100) {
+  if (size >= 100) {
     return alert("Size is too big");
   }
   sec.innerHTML = "";
