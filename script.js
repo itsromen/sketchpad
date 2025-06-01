@@ -7,22 +7,38 @@ function createGrid(size = 16) {
     sec.appendChild(div);
   }
 }
-// let opacity = 1;
+
+let opacityMode = false;
+let opacity = 0;
 let isDrawing = false;
 
 sec.addEventListener("mousedown", (e) => {
   isDrawing = true;
   e.target.style.backgroundColor = changeColor();
+  if (opacityMode) {
+    e.target.style.opacity = opacity.toString();
+    opacity += 0.1;
+  } else {
+    e.target.style.opacity = "1";
+  }
 });
 
 sec.addEventListener("mouseover", (e) => {
   if (isDrawing) {
     e.target.style.backgroundColor = changeColor();
+    if (opacityMode) {
+      e.target.style.opacity = opacity.toString();
+      opacity += 0.1;
+    } else {
+      e.target.style.opacity = "1";
+    }
   }
 });
 
 document.addEventListener("mouseup", () => {
   isDrawing = false;
+  opacity = 0;
+  opacityMode = false;
 });
 
 const btn = document.querySelector("button");
@@ -55,5 +71,8 @@ function changeColor() {
       return "red";
     case "rgb":
       return `rgb(${generateRandom()}, ${generateRandom()}, ${generateRandom()})`;
+    case "darkening":
+      opacityMode = true;
+      return `rgb(0, 0, 0)`;
   }
 }
