@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    width: 832px;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+
+div {
+    background-color: antiquewhite;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+}
